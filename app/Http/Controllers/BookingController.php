@@ -38,7 +38,7 @@ class BookingController extends Controller
                 $user = User::findOrFail( $model->getOriginal($source['field']));
                 $timeBreak = \Carbon\Carbon::parse($crudFieldValueTo)->format('H:i');
 
-        
+
                 if (!$crudFieldValue && $crudFieldValueTo) {
                     continue;
                 }
@@ -54,7 +54,7 @@ class BookingController extends Controller
 
         return view('welcome', compact('arenas', 'bookings'));
     }
-
+    
     public function booking(Request $request){
 
         $arenas = Arena::where('status', 1)->get();
@@ -67,7 +67,7 @@ class BookingController extends Controller
     {
         $arena = Arena::findOrFail($request->arena_id);
 
-        
+
 
         $orderDate = date('Y-m-d H:i:s');
         $paymentDue = (new \DateTime($orderDate))->modify('+1 hour')->format('Y-m-d H:i:s');
